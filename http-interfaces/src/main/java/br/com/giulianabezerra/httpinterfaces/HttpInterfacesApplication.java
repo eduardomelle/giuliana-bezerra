@@ -4,7 +4,16 @@ import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClient.Builder;
+import org.springframework.web.reactive.function.client.support.WebClientAdapter;
+import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
+import org.springframework.web.service.annotation.PostExchange;
+import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 @SpringBootApplication
 public class HttpInterfacesApplication {
@@ -13,14 +22,26 @@ public class HttpInterfacesApplication {
 		SpringApplication.run(HttpInterfacesApplication.class, args);
 	}
 
+	@Bean
+	HttpServiceProxyFactory httpServiceProxyFactory(Builder builder) {
+		WebClient webClient = WebClient.builder().baseUrl("https://my-json-server.typicode.com/typicode/demo").build();
+
+		HttpServiceProxyFactory httpServiceProxyFactory = HttpServiceProxyFactory
+				.builder(WebClientAdapter.forClient(webClient)).build();
+		return httpServiceProxyFactory;
+	}
+
 	@HttpExchange("/posts")
 	interface PostClient {
 
+		@GetExchange
 		List<Post> list();
 
-		Post get(Long id);
+		@GetExchange("${id}")
+		Post get(@PathVariable("id") Long id);
 
-		Post create(Post post);
+		@PostExchange
+		Post create(@RequestBody Post post);
 
 	}
 
