@@ -2,6 +2,7 @@ package br.com.giulianabezerra.httpinterfaces;
 
 import java.util.List;
 
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -31,13 +32,18 @@ public class HttpInterfacesApplication {
 		return httpServiceProxyFactory;
 	}
 
+	@Bean
+	PostClient postClient(HttpServiceProxyFactory factory) {
+		return factory.createClient(PostClient.class);
+	}
+
 	@HttpExchange("/posts")
 	interface PostClient {
 
 		@GetExchange
 		List<Post> list();
 
-		@GetExchange("${id}")
+		@GetExchange("/{id}")
 		Post get(@PathVariable("id") Long id);
 
 		@PostExchange
@@ -47,6 +53,15 @@ public class HttpInterfacesApplication {
 
 	record Post(Long id, String title) {
 
+	}
+
+	@Bean
+	ApplicationRunner applicationRunner(PostClient postClient) {
+		return args -> {
+			System.out.println("List posts: " + postClient.list());
+			System.out.println("Post 1: " + postClient.get(1L));
+			System.out.println("New post: " + postClient.create(new Post(4L, "Post 4")));
+		};
 	}
 
 }

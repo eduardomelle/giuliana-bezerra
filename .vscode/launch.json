@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-HttpInterfacesApplication<http-interfaces>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.com.giulianabezerra.httpinterfaces.HttpInterfacesApplication",
+            "projectName": "http-interfaces",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
