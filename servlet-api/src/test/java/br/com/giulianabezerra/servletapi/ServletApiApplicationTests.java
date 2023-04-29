@@ -25,6 +25,14 @@ class ServletApiApplicationTests {
 		assertEquals(user.username(), postResponse.username());
 		assertEquals(user.email(), postResponse.email());
 		assertEquals(user.password(), postResponse.password());
+
+		User[] getResponses = restTemplate.getForObject("/users", User[].class);
+		User getResponse = getResponses[0];
+
+		assertNotNull(getResponse.id());
+		assertEquals(user.username(), getResponse.username());
+		assertEquals(user.email(), getResponse.email());
+		assertEquals(user.password(), getResponse.password());
 	}
 
 }

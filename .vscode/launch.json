@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ServletApiApplication",
+            "request": "launch",
+            "mainClass": "br.com.giulianabezerra.servletapi.ServletApiApplication",
+            "projectName": "servlet-api"
+        },
+        {
+            "type": "java",
+            "name": "ReactiveApiApplication",
+            "request": "launch",
+            "mainClass": "br.com.giulianabezerra.reactiveapi.ReactiveApiApplication",
+            "projectName": "reactive-api"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-HttpInterfacesApplication<http-interfaces>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
