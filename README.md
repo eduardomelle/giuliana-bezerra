@@ -13,5 +13,5 @@ ab:
 sudo apt update
 sudo apt install apache2-utils
 servlet-api: ab -n 1000 -c 100 http://localhost:8081/users
-reactive-api: ab -n 1000 -c 100 http://localhost:8081/users
+reactive-api: ab -n 1000 -c 100 http://localhost:8080/users
 ```
