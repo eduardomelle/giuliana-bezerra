@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SpringProblemDetailsApplication",
+            "request": "launch",
+            "mainClass": "br.com.giulianabezerra.springproblemdetails.SpringProblemDetailsApplication",
+            "projectName": "spring-problem-details"
+        },
+        {
+            "type": "java",
             "name": "ServletApiApplication",
             "request": "launch",
             "mainClass": "br.com.giulianabezerra.servletapi.ServletApiApplication",
