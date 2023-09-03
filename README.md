@@ -6,7 +6,7 @@
 docker container run -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=demo -e MYSQL_USER=user -e MYSQL_PASSWORD=123456 -p 3306:3306 --name mysql mysql
 ```
 
-## ab:
+## ab
 
 ```bash
 sudo apt update
