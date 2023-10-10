@@ -1,0 +1,9 @@
+2023-10-10 19:27:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from [*]user"; expected "identifier"; SQL statement:
+select * from user [42001-214]
+2023-10-10 19:27:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from [*]USER"; expected "identifier"; SQL statement:
+select * from USER [42001-214]
+2023-10-10 19:28:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from [*]USER"; expected "identifier"; SQL statement:
+select * from USER [42001-214]
