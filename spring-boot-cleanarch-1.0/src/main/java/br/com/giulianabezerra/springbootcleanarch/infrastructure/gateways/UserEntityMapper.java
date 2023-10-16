@@ -6,11 +6,12 @@ import br.com.giulianabezerra.springbootcleanarch.infrastructure.persistence.Use
 public class UserEntityMapper {
 
     UserEntity toEntity(User userDomainObj) {
-        UserEntity userEntity = new UserEntity();
-        userEntity.setEmail(userDomainObj.email());
-        userEntity.setPassword(userDomainObj.password());
-        userEntity.setUsername(userDomainObj.username());
-        return userEntity;
+        return new UserEntity(userDomainObj.username(), userDomainObj.password(),
+                userDomainObj.email());
+    }
+
+    User toDomainObj(UserEntity userEntity) {
+        return new User(userEntity.getUsername(), userEntity.getPassword(), userEntity.getEmail());
     }
 
 }

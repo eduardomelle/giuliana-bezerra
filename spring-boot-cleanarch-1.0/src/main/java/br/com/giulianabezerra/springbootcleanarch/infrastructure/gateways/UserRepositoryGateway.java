@@ -9,18 +9,20 @@ public class UserRepositoryGateway implements UserGateway {
 
     private final UserRepository userRepository;
 
-    public UserRepositoryGateway(UserRepository userRepository) {
+    private final UserEntityMapper userEntityMapper;
+
+    public UserRepositoryGateway(UserRepository userRepository, UserEntityMapper userEntityMapper) {
         this.userRepository = userRepository;
+        this.userEntityMapper = userEntityMapper;
     }
 
     @Override
-    public User createUser(User user) {
-        UserEntity userEntity = new UserEntityMapper().toEntity(user);
+    public User createUser(User userDomainObj) {
+        UserEntity userEntity = this.userEntityMapper.toEntity(userDomainObj);
 
-        UserEntity ue = this.userRepository.save(userEntity);
+        UserEntity savedObj = this.userRepository.save(userEntity);
 
-        User u = new User(ue.getUsername(), ue.getPassword(), ue.getEmail());
-        return u;
+        return this.userEntityMapper.toDomainObj(savedObj);
     }
 
 }

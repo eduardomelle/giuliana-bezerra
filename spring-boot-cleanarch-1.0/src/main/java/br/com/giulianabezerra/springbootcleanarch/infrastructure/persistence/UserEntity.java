@@ -1,7 +1,9 @@
 package br.com.giulianabezerra.springbootcleanarch.infrastructure.persistence;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("USER")
 public class UserEntity {
 
     @Id
@@ -10,8 +12,14 @@ public class UserEntity {
     private String username;
 
     private String password;
-    
+
     private String email;
+
+    public UserEntity(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
