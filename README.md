@@ -24,3 +24,4 @@ redis-cli
 keys *
 get products::1
 ```
+
